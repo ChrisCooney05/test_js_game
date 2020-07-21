@@ -1,4 +1,5 @@
 import Block from "./block.js";
+import InputHandler from "./inputHandler.js";
 
 const canvas = document.getElementById("game_area");
 const ctx = canvas.getContext("2d");
@@ -7,8 +8,8 @@ const ctx = canvas.getContext("2d");
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 600;
 
-const block = new Block(GAME_HEIGHT);
-block.draw(ctx);
+const block = new Block(GAME_WIDTH, GAME_HEIGHT);
+const inputHandler = new InputHandler(block);
 
 let lastTime = 0;
 //each time requestAnimationFrame() is run the timestamp is passed back into gameLoop
