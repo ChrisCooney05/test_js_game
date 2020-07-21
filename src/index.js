@@ -7,8 +7,23 @@ const ctx = canvas.getContext("2d");
 const GAME_WIDTH = 800;
 const GAME_HEIGHT = 600;
 
-ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-//clears the screen after each move
-
 const block = new Block(GAME_HEIGHT);
 block.draw(ctx);
+
+let lastTime = 0;
+//each time requestAnimationFrame() is run the timestamp is passed back into gameLoop
+function gameLoop(timestamp) {
+  let deltaTime = timestamp - lastTime;
+  lastTime = timestamp;
+
+  ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+  //clears the screen after each move
+  block.update(deltaTime);
+  block.draw(ctx);
+
+  requestAnimationFrame(gameLoop);
+  // The requestAnimationFrame() method tells the browser to run a callback function
+  // right before the next repaint happens.so each refresh gameLoop is ran
+}
+
+gameLoop();

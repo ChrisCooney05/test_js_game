@@ -16,4 +16,11 @@ export default class block {
     //fillStyle gives the colour of the object and fillRect
     //makes a square at 20x 20y at the size of 100 x 100 px
   }
+
+  update(deltaTime) {
+    if (!deltaTime) return;
+    //for the first frame there will be no delta time to pass in
+    //so we need to return from the method in order to the game running
+    //deltaTime means how much time has passed since the last update
+  }
 }
