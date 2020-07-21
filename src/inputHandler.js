@@ -9,7 +9,7 @@ export default class InputHandler {
           block.moveRight();
           break;
         case 38:
-          block.moveUp();
+          block.jump();
           break;
       }
     });
